@@ -1,5 +1,5 @@
 
-const About = () => {
+const Blogs = () => {
     return (
         <div>
             <h2 className="text-3xl text-center">Coming Soon</h2>
@@ -7,4 +7,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default Blogs;

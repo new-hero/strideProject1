@@ -3,9 +3,21 @@ import { NavLink, Outlet } from "react-router-dom";
 const UserLayout = () => {
   const menu = (
     <>
-      <NavLink className='btn capitalize' to="">Dashboard</NavLink>
-      <NavLink className='btn capitalize' to="about">about</NavLink>
-      <NavLink className='btn capitalize' to="contact">contact</NavLink>
+      <NavLink className="btn capitalize m-1" to="/">
+        Home
+      </NavLink>
+      <NavLink className="btn capitalize m-1" to="about">
+        about
+      </NavLink>
+      <NavLink className="btn capitalize m-1" to="contact">
+        contact
+      </NavLink>
+      <NavLink className="btn capitalize m-1" to="blogs">
+        Blogs
+      </NavLink>
+      <NavLink className="btn capitalize m-1" to="">
+        dashboard
+      </NavLink>
     </>
   );
   return (
@@ -35,11 +47,11 @@ const UserLayout = () => {
               </svg>
             </label>
           </div>
-          <div className="flex-1 px-2 mx-2">Navbar Title</div>
+          <div className="flex-1 px-2 mx-2">Dashboard</div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
-              {menu}
+              {/* {menu} */}
             </ul>
           </div>
         </div>
@@ -54,7 +66,7 @@ const UserLayout = () => {
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200">
           {/* Sidebar content here */}
-          {menu}
+          {/* {menu} */}
         </ul>
       </div>
     </div>

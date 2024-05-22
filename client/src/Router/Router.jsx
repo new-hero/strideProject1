@@ -8,12 +8,12 @@ import UserLayout from "../Layouts/UserLayout";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
+import Blogs from "../Pages/Blogs";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -28,12 +28,20 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path:'*',
+        element:<ErrorPage/>
       },
     ],
   },
@@ -58,8 +66,17 @@ const router = createBrowserRouter([
         path: "contact",
         element: <Contact />,
       },
+      {
+        path:'blogs',
+        element:<Blogs/>
+      },
+      {
+        path:'*',
+        element:<ErrorPage/>
+      },
     ],
   },
+  
 ]);
 
 export default router;

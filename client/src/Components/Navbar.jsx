@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
@@ -14,6 +14,9 @@ const Navbar = () => {
       </NavLink>
       <NavLink className="btn capitalize m-1" to="/contact">
         contact
+      </NavLink>
+      <NavLink className="btn capitalize m-1" to="/blogs">
+        Blogs
       </NavLink>
       <NavLink className="btn capitalize m-1" to="/dashboard">
         dashboard
@@ -47,7 +50,7 @@ const Navbar = () => {
             {menu}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to='/' className="btn bg-green-500 text-white btn-ghost text-xl">RDC</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menu}</ul>
