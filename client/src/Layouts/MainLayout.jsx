@@ -4,7 +4,7 @@ import Footer from "../Components/Footer";
 
 const MainLayout = () => {
   return (
-    <main className="min-h-screen flex flex-col justify-between relative m-auto max-w-5xl">
+    <main className="min-h-screen flex flex-col justify-between relative m-auto max-w-7xl">
       <Navbar />
       <div>
         <Outlet />

@@ -50,7 +50,7 @@ const Navbar = () => {
             {menu}
           </ul>
         </div>
-        <Link to='/' className="btn bg-green-500 text-white btn-ghost text-xl">RDC</Link>
+        <Link to='/' className="btn bg-green-500 text-white btn-ghost text-xl">RSC</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menu}</ul>

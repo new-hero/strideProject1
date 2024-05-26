@@ -18,6 +18,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("http://localhost:3000/products"),
       },
       {
         path: "/about",
@@ -40,8 +41,8 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path:'*',
-        element:<ErrorPage/>
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
@@ -67,16 +68,15 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:'blogs',
-        element:<Blogs/>
+        path: "blogs",
+        element: <Blogs />,
       },
       {
-        path:'*',
-        element:<ErrorPage/>
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
-  
 ]);
 
 export default router;

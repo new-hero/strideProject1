@@ -1,26 +1,16 @@
-import About from "../Components/HomePagesCom/About";
-import Banner from "../Components/HomePagesCom/Banner";
-import Blog from "../Components/HomePagesCom/Blog";
-import Card from "../Components/HomePagesCom/Card";
-import Doctors from "../Components/HomePagesCom/Doctors";
-import Offers from "../Components/HomePagesCom/Offers";
-import Service from "../Components/HomePagesCom/Service";
-import SpecialOffer from "../Components/HomePagesCom/SpecialOffer";
-import TestCategory from "../Components/HomePagesCom/TestCategory";
-import Testimonial from "../Components/HomePagesCom/Testimonial";
+import { useLoaderData } from "react-router-dom";
+import Banner from "../Components/HomePageCom/Banner";
+import ProductCard from "../Components/HomePageCom/ProductCard";
+import Service from "../Components/HomePageCom/Service";
+import Products from "./Products";
 
 const Home = () => {
+  const products = useLoaderData();
   return (
-    <div>
+    <div className="text-center">
       <Banner />
-      <TestCategory />
-      <About />
-      <Offers />
       <Service />
-      <Doctors />
-      <Testimonial />
-      <SpecialOffer />
-      <Blog />
+      <Products products={products}/>
     </div>
   );
 };

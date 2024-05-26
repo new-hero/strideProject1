@@ -1,0 +1,18 @@
+{
+    "products": [
+      { "id": "1", "title": "first product", "price": 100, "img":"https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg", "description":"A Short description for a Product 1" },
+      { "id": "2", "title": "second product", "price": 90, "img":"https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg", "description":"A Short description for a Product 2" },
+      { "id": "3", "title": "third product", "price": 110, "img":"https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg", "description":"A Short description for a Product 3" },
+      { "id": "4", "title": "Fourth product", "price": 80, "img":"https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg", "description":"A Short description for a Product 4" },
+      { "id": "5", "title": "fifth product", "price": 120, "img":"https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg", "description":"A Short description for a Product 5" }
+     
+    ],
+    "comments": [
+      { "id": "1", "text": "a comment about post 1", "postId": "1" },
+      { "id": "2", "text": "another comment about post 1", "postId": "1" }
+    ],
+    "profile": {
+      "name": "typicode"
+    }
+  }
+  
