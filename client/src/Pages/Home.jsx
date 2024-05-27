@@ -1,6 +1,5 @@
 import { useLoaderData } from "react-router-dom";
 import Banner from "../Components/HomePageCom/Banner";
-import ProductCard from "../Components/HomePageCom/ProductCard";
 import Service from "../Components/HomePageCom/Service";
 import Products from "./Products";
 
@@ -10,7 +9,7 @@ const Home = () => {
     <div className="text-center">
       <Banner />
       <Service />
-      <Products products={products}/>
+      <Products products={products.slice(0, 3)}/>
     </div>
   );
 };
