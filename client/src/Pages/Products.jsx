@@ -1,4 +1,4 @@
-import ProductCard from "../Components/HomePageCom/ProductCard";
+import ProductCardUser from "../Components/HomePageCom/ProductCardUser";
 
 const Products = ({ products }) => {
   return (
@@ -6,7 +6,7 @@ const Products = ({ products }) => {
       <h2 className="text-4xl my-10"> Products </h2>
       <div className="flex gap-3 flex-wrap">
         {products.map((p) => (
-          <ProductCard key={p.id} product={p}></ProductCard>
+          <ProductCardUser key={p.id} product={p}></ProductCardUser>
         ))}
       </div>
     </div>

@@ -9,8 +9,8 @@ const UserLayout = () => {
       <NavLink className=" capitalize m-1" to="">
         Dashboard
       </NavLink>
-      <NavLink className=" capitalize m-1" to="manageProducts">
-        Products
+      <NavLink className=" capitalize m-1" to="allProducts">
+        All Products
       </NavLink>
       <NavLink className=" capitalize m-1" to="addProduct">
         Add Product
