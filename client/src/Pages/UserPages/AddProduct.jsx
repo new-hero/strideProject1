@@ -18,19 +18,21 @@ const AddProduct = () => {
       description,
       img,
     };
-
-    fetch("http://localhost:3000/products", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        alert("Product Added");
-        e.reset();
-      });
+    const sure = window.confirm("Are you sure Product save to db?");
+    if (sure) {
+      fetch("http://localhost:3000/products", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(product),
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("Product Added");
+          e.reset();
+        });
+    }
   };
   return (
     <div>

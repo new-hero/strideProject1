@@ -23,19 +23,21 @@ const UpdateProduct = () => {
       description,
       img,
     };
-
-    fetch(`http://localhost:3000/products/${loadedProduct?.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        alert("Product Updated");
-        e.reset();
-      });
+    const sure = window.confirm("Are you sure Update Product information?");
+    if (sure) {
+      fetch(`http://localhost:3000/products/${loadedProduct?.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(product),
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("Product Updated");
+          e.reset();
+        });
+    }
   };
   return (
     <div>
