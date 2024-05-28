@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "first product",
-      "price": 100,
+      "price": 101,
       "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg",
       "description": "A Short description for a Product 1"
     },

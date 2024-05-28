@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateProduct = () => {
   const loadedProduct = useLoaderData();
@@ -38,8 +39,8 @@ const UpdateProduct = () => {
   };
   return (
     <div>
-      <div>
-        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div className="my-10">
+        <div className="card shrink-0 w-full max-w-lg mx-auto shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleForm}>
             {/* id */}
             <div className="form-control">
