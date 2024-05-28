@@ -1,5 +1,5 @@
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const UpdateProduct = () => {
   const loadedProduct = useLoaderData();
@@ -13,7 +13,7 @@ const UpdateProduct = () => {
     const description = form.description.value;
     const img = form.img.value;
     if (!title || !price || !description || !img) {
-      toast("Please Provide Product Information");
+      toast.error("Please Provide Product Information");
       return;
     }
     const product = {
@@ -34,8 +34,8 @@ const UpdateProduct = () => {
       })
         .then((response) => response.json())
         .then((json) => {
-          alert("Product Updated");
-          e.reset();
+          toast.success("Product Updated");
+  
         });
     }
   };

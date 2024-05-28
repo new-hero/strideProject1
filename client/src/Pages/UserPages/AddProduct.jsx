@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const AddProduct = () => {
   const handleForm = (e) => {
     e.preventDefault();
@@ -8,7 +10,7 @@ const AddProduct = () => {
     const description = form.description.value;
     const img = form.img.value;
     if (!title || !price || !description || !img) {
-      toast("Please Provide Product Information");
+      toast.error("Please Provide Product Information");
       return;
     }
     const product = {
@@ -29,8 +31,8 @@ const AddProduct = () => {
       })
         .then((response) => response.json())
         .then((json) => {
-          alert("Product Added");
-          e.reset();
+          toast.success("Product Added");
+          form.reset();
         });
     }
   };

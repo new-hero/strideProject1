@@ -1,5 +1,5 @@
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
   const { id, title, price, description, img } = product;
@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
         .then((response) => response.json())
         .then((json) => {
           if (json.deletedCount > 0) {
-            toast("Item Deleted");
+            toast.success("Item Deleted");
           }
         });
     }

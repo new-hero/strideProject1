@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "first product",
-      "price": 101,
+      "price": 201,
       "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg",
       "description": "A Short description for a Product 1"
     },
@@ -27,6 +27,55 @@
       "price": 80,
       "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg",
       "description": "A Short description for a Product 4"
+    },
+    {
+      "id": "5",
+      "title": "Product 5",
+      "price": 105,
+      "description": "A Short description for a Product 5",
+      "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Product 6",
+      "price": 106,
+      "description": "A Short description for a Product 6",
+      "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Product 7",
+      "price": 107,
+      "description": "A Short description for a Product 7",
+      "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Product 8",
+      "price": 108,
+      "description": "A Short description for a Product 8",
+      "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+    },
+    {
+      "id": "9",
+      "title": "Product 9",
+      "price": 109,
+      "description": "A Short description for a Product 9",
+      "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+    },
+    {
+      "id": "10",
+      "title": "Product 10",
+      "price": 310,
+      "description": "A Short description for a Product 10",
+      "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
+    },
+    {
+      "id": "11",
+      "title": "Product 11",
+      "price": 111,
+      "description": "A Short description for a Product 11",
+      "img": "https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
     }
   ],
   "comments": [
