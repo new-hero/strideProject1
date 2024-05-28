@@ -2,25 +2,54 @@ const AddProduct = () => {
   const handleForm = (e) => {
     e.preventDefault();
     const form = e.target;
+    const id = form.id.value;
     const title = form.title.value;
-    const price = form.price.value;
+    const price = parseInt(form.price.value);
     const description = form.description.value;
     const img = form.img.value;
     if (!title || !price || !description || !img) {
-      return toast("Please Provide Product Information");
+      toast("Please Provide Product Information");
+      return;
     }
     const product = {
+      id,
       title,
       price,
       description,
       img,
     };
+
+    fetch("http://localhost:3000/products", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        alert("Product Added");
+        e.reset();
+      });
   };
   return (
     <div>
       <div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleForm}>
+            {/* id */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Product Id</span>
+              </label>
+              <input
+                type="number"
+                name="id"
+                placeholder="Product id"
+                className="input input-bordered"
+                required
+              />
+            </div>
             {/* title */}
             <div className="form-control">
               <label className="label">
