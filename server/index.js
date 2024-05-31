@@ -10,19 +10,54 @@ app.use(cors());
 
 // Define a simple route
 app.get("/", (req, res) => {
-  res.send("Hello Developer Server Is Running");
+  res.send("Hi Developer Server Is Running");
 });
 
-// Define another route
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from the API!" });
+
+
+// get one
+app.get("/data/:id", async (req, res) => {
+  const id = req.params.id;
+  const query = { _id: new ObjectId(id) };
+  const result = await dataCollection.findOne(query);
+  res.send(result);
 });
 
-// Define a POST route
-app.post("/api/data", (req, res) => {
+// Define Patch route
+app.patch("/data/:id", async (req, res) => {
+  const id = req.params.id;
+  const filter = { _id: new ObjectId(id) };
   const data = req.body;
-  res.json({ receivedData: data });
+  const result = await dataCollection.updateOne(filter, {
+    $set: data,
+  });
+  res.send(result);
 });
+
+// Define Patch route
+app.delete("/data/:id", async (req, res) => {
+  const id = req.params.id;
+  const filter = { _id: new ObjectId(id) };
+  const result = await dataCollection.deleteOne(filter);
+  res.send(result);
+});
+
+//get all
+app.get("/data", async (req, res) => {
+  const query = {};
+  const result = await dataCollection.find(query).toArray();
+  res.send(result);
+});
+
+// post data
+app.post("/data", async (req, res) => {
+  const data = req.body;
+  const result = await dataCollection.insetOne(data);
+  res.send(result);
+});
+
+
+
 
 // Start the server
 app.listen(port, () => {
