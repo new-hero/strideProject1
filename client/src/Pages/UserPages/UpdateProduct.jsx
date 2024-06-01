@@ -3,11 +3,10 @@ import { useLoaderData } from "react-router-dom";
 
 const UpdateProduct = () => {
   const loadedProduct = useLoaderData();
-  const { id, title, price, description, img } = loadedProduct;
+  const { title, price, description, img } = loadedProduct;
   const handleForm = (e) => {
     e.preventDefault();
     const form = e.target;
-    const id = form.id.value;
     const title = form.title.value;
     const price = parseInt(form.price.value);
     const description = form.description.value;
@@ -17,7 +16,6 @@ const UpdateProduct = () => {
       return;
     }
     const product = {
-      id,
       title,
       price,
       description,
@@ -25,7 +23,7 @@ const UpdateProduct = () => {
     };
     const sure = window.confirm("Are you sure Update Product information?");
     if (sure) {
-      fetch(`http://localhost:3000/products/${loadedProduct?.id}`, {
+      fetch(`http://localhost:3000/products/${loadedProduct?._id}`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -33,7 +31,7 @@ const UpdateProduct = () => {
         body: JSON.stringify(product),
       })
         .then((response) => response.json())
-        .then((json) => {
+        .then(() => {
           toast.success("Product Updated");
   
         });
@@ -44,20 +42,7 @@ const UpdateProduct = () => {
       <div className="my-10">
         <div className="card shrink-0 w-full max-w-lg mx-auto shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleForm}>
-            {/* id */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Product Id</span>
-              </label>
-              <input
-                type="number"
-                name="id"
-                defaultValue={id}
-                placeholder="Product id"
-                className="input input-bordered"
-                required
-              />
-            </div>
+           
             {/* title */}
             <div className="form-control">
               <label className="label">

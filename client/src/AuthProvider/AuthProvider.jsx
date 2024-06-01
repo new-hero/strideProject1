@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
+        // jwt from here
         setUserLoading(false);
       } else {
         setUser();

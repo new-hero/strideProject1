@@ -1,8 +1,9 @@
 require("dotenv").config();
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -12,52 +13,63 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hi Developer Server Is Running");
 });
+const uri = 'mongodb+srv://strideprojectuser:strideprojectpass@cluster0.dtcwl7u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-
-
-// get one
-app.get("/data/:id", async (req, res) => {
-  const id = req.params.id;
-  const query = { _id: new ObjectId(id) };
-  const result = await dataCollection.findOne(query);
-  res.send(result);
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 });
 
-// Define Patch route
-app.patch("/data/:id", async (req, res) => {
-  const id = req.params.id;
-  const filter = { _id: new ObjectId(id) };
-  const data = req.body;
-  const result = await dataCollection.updateOne(filter, {
-    $set: data,
-  });
-  res.send(result);
-});
+async function run() {
+  try {
+    await client.connect();
+    console.log('server connect')
+    const strideProjectDb = client.db("strideProjectDb");
+    const productCollection = strideProjectDb.collection("productCollection");
 
-// Define Patch route
-app.delete("/data/:id", async (req, res) => {
-  const id = req.params.id;
-  const filter = { _id: new ObjectId(id) };
-  const result = await dataCollection.deleteOne(filter);
-  res.send(result);
-});
+    // products curd
+    app.get("/products/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await productCollection.findOne(query);
+      res.send(result);
+    });
+    app.patch("/products/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const product = req.body;
+      const result = await productCollection.updateOne(filter, {
+        $set: product,
+      });
+      res.send(result);
+    });
+    app.delete("/products/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const result = await productCollection.deleteOne(filter);
+      res.send(result);
+    });
+    app.get("/products", async (req, res) => {
+      const query = {};
+      const result = await productCollection.find(query).toArray();
+      res.send(result);
+    });
 
-//get all
-app.get("/data", async (req, res) => {
-  const query = {};
-  const result = await dataCollection.find(query).toArray();
-  res.send(result);
-});
-
-// post data
-app.post("/data", async (req, res) => {
-  const data = req.body;
-  const result = await dataCollection.insetOne(data);
-  res.send(result);
-});
-
-
-
+    // post products
+    app.post("/products", async (req, res) => {
+      const product = req.body;
+      const result = await productCollection.insertOne(product);
+      res.send(result);
+    });
+  } finally {
+    // Ensures that the client will close when you finish/error
+    // await client.close();
+  }
+}
+run().catch(console.dir);
 
 // Start the server
 app.listen(port, () => {

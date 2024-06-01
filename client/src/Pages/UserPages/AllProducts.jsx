@@ -12,7 +12,7 @@ const AllProducts = () => {
     <div>
       <div className="flex gap-3 flex-wrap">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product}></ProductCard>
+          <ProductCard key={product._id} product={product}></ProductCard>
         ))}
       </div>
     </div>

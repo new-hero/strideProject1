@@ -4,7 +4,6 @@ const AddProduct = () => {
   const handleForm = (e) => {
     e.preventDefault();
     const form = e.target;
-    const id = form.id.value;
     const title = form.title.value;
     const price = parseInt(form.price.value);
     const description = form.description.value;
@@ -14,7 +13,6 @@ const AddProduct = () => {
       return;
     }
     const product = {
-      id,
       title,
       price,
       description,
@@ -30,7 +28,7 @@ const AddProduct = () => {
         body: JSON.stringify(product),
       })
         .then((response) => response.json())
-        .then((json) => {
+        .then(() => {
           toast.success("Product Added");
           form.reset();
         });
@@ -41,19 +39,7 @@ const AddProduct = () => {
       <div className="my-10">
         <div className="card shrink-0 w-full max-w-lg mx-auto shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleForm}>
-            {/* id */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Product Id</span>
-              </label>
-              <input
-                type="number"
-                name="id"
-                placeholder="Product id"
-                className="input input-bordered"
-                required
-              />
-            </div>
+
             {/* title */}
             <div className="form-control">
               <label className="label">

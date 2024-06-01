@@ -2,11 +2,11 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { id, title, price, description, img } = product;
+  const { _id, title, price, description, img } = product;
   const handleDelete = (p) => {
     const sure = window.confirm("Are You Sure? Delete " + p?.title);
     if (sure) {
-      fetch(`http://localhost:3000/products/${p?.id}`, {
+      fetch(`http://localhost:3000/products/${p?._id}`, {
         method: "DELETE",
       })
         .then((response) => response.json())
@@ -29,13 +29,13 @@ const ProductCard = ({ product }) => {
           <p>{description}</p>
           <div className="card-actions">
             <Link
-              to={`/dashboard/allProducts/${id}`}
+              to={`/dashboard/allProducts/${_id}`}
               className="btn btn-primary"
             >
               Details
             </Link>
             <Link
-              to={`/dashboard/updateProduct/${id}`}
+              to={`/dashboard/updateProduct/${_id}`}
               className="btn  bg-blue-500 text-white"
             >
               Edit
