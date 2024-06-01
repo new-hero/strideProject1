@@ -24,6 +24,33 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
         // jwt from here
+        // send to db from here
+        const userInfo = { email: currentUser?.email };
+        fetch("http://localhost:3000/jwt", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const token = data?.token;
+            if (token) {
+              localStorage.setItem("token", token);
+            }
+          });
+
+        fetch("http://localhost:3000/users", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((response) => response.json())
+          .then(() => {});
+
         setUserLoading(false);
       } else {
         setUser();
