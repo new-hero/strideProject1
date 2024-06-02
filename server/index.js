@@ -28,12 +28,12 @@ const client = new MongoClient(uri, {
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    return res.send({ message: "you have not auth header" });
+    return res.send({message:'You have no authHeader'});
   }
-  const token= authHeader.split(' ')[1]
+  const token = authHeader.split(" ")[1];
   jwt.verify(token, "secret", function (err, user) {
     if (err) {
-      return res.send({ message: "your token is not valid" });
+      return res.send({message:'Your token is not valid'});
     } else {
       req.user = user;
       next();
@@ -89,19 +89,19 @@ async function run() {
     });
 
     // users curd
-    app.get("/users/get/:id",verifyToken, async (req, res) => {
+    app.get("/users/get/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await userCollection.findOne(query);
       res.send(result);
     });
-    app.get("/users/:email",verifyToken, async (req, res) => {
+    app.get("/users/:email", async (req, res) => {
       const email = req.params.email;
       const query = { email };
       const result = await userCollection.findOne(query);
       res.send(result);
     });
-    app.patch("/users/:id", verifyToken, async (req, res) => {
+    app.patch("/users/:id", async (req, res) => {
       const id = req.params.id;
       const filter = { _id: new ObjectId(id) };
       const newDoc = req.body;
@@ -110,7 +110,7 @@ async function run() {
       });
       res.send(result);
     });
-    app.delete("/users/:id", verifyToken, async (req, res) => {
+    app.delete("/users/:id", async (req, res) => {
       const id = req.params.id;
       const filter = { _id: new ObjectId(id) };
       const result = await userCollection.deleteOne(filter);
@@ -118,13 +118,18 @@ async function run() {
     });
 
     //verify admin
-    app.get("/users", verifyToken, async (req, res) => {
+    app.get("/users", async (req, res) => {
       const query = {};
       const result = await userCollection.find(query).toArray();
       res.send(result);
     });
     app.post("/users", async (req, res) => {
       const user = req.body;
+      const query = { email: user.email };
+      const exist = await userCollection.findOne(query);
+      if (exist) {
+        return res.send({ message: "user already exist" });
+      }
       const result = await userCollection.insertOne({ ...user, role: "user" });
       res.send(result);
     });

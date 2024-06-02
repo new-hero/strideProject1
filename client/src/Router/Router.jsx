@@ -14,6 +14,7 @@ import SingleProduct from "../Pages/SingleProduct";
 import AllProducts from "../Pages/UserPages/AllProducts";
 import AddProduct from "../Pages/UserPages/AddProduct";
 import UpdateProduct from "../Pages/UserPages/UpdateProduct";
+import EditProfile from "../Pages/UserPages/EditProfile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
       {
         path: "/products/:id",
         element: <SingleProduct />,
-        loader: ({ params }) =>  fetch(`http://localhost:3000/products/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/products/${params.id}`),
       },
       {
         path: "/about",
@@ -70,13 +72,20 @@ const router = createBrowserRouter([
         element: <DashboardHome />,
       },
       {
+        path: "editProfile/:id",
+        element: <EditProfile />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/users/get/${params.id}`),
+      },
+      {
         path: "allProducts",
         element: <AllProducts />,
       },
       {
         path: "allProducts/:id",
         element: <SingleProduct />,
-        loader: ({ params }) => fetch(`http://localhost:3000/products/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/products/${params.id}`),
       },
       {
         path: "addProduct",
@@ -85,7 +94,8 @@ const router = createBrowserRouter([
       {
         path: "updateProduct/:id",
         element: <UpdateProduct />,
-        loader: ({ params }) =>   fetch(`http://localhost:3000/products/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/products/${params.id}`),
       },
       {
         path: "*",
