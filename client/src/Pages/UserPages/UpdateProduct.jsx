@@ -1,8 +1,9 @@
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateProduct = () => {
   const loadedProduct = useLoaderData();
+  const navigate = useNavigate();
   const { title, price, description, img } = loadedProduct;
   const handleForm = (e) => {
     e.preventDefault();
@@ -27,13 +28,18 @@ const UpdateProduct = () => {
         method: "PATCH",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          authorization: `barer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(product),
       })
         .then((response) => response.json())
-        .then(() => {
-          toast.success("Product Updated");
-  
+        .then((data) => {
+          if (data.modifiedCount > 0) {
+            toast.success("Product Updated");
+            navigate('/dashboard')
+          } else if (data.message) {
+            toast.error(data.message);
+          }
         });
     }
   };
@@ -42,7 +48,6 @@ const UpdateProduct = () => {
       <div className="my-10">
         <div className="card shrink-0 w-full max-w-lg mx-auto shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleForm}>
-           
             {/* title */}
             <div className="form-control">
               <label className="label">

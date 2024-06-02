@@ -24,13 +24,18 @@ const AddProduct = () => {
         method: "POST",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          authorization:`barer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(product),
       })
         .then((response) => response.json())
-        .then(() => {
-          toast.success("Product Added");
-          form.reset();
+        .then((data) => {
+          if (data.insertedId) {
+            toast.success("Product Added");
+            form.reset();
+          } else if (data.message) {
+            toast.error(data.message);
+          }
         });
     }
   };
@@ -39,7 +44,6 @@ const AddProduct = () => {
       <div className="my-10">
         <div className="card shrink-0 w-full max-w-lg mx-auto shadow-2xl bg-base-100">
           <form className="card-body" onSubmit={handleForm}>
-
             {/* title */}
             <div className="form-control">
               <label className="label">

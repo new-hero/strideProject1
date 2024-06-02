@@ -8,11 +8,16 @@ const ProductCard = ({ product }) => {
     if (sure) {
       fetch(`http://localhost:3000/products/${p?._id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `barer ${localStorage.getItem("token")}`,
+        },
       })
         .then((response) => response.json())
-        .then((json) => {
-          if (json.deletedCount > 0) {
+        .then((data) => {
+          if (data.deletedCount > 0) {
             toast.success("Item Deleted");
+          } else if (data.message) {
+            toast.error(data.message);
           }
         });
     }
